@@ -1,0 +1,28 @@
+INSTALASI VIRO AR  
+link: https://medium.com/simform-engineering/what-is-augmented-reality-how-to-implement-ar-using-react-native-2340bdba9a8d
+
+-ANDROID LINKING
+
+1. In your android/build.gradle Bump the minimum SDK version to at least 24, and the gradle plugin to at least 4.1.1:
+* untuk gradle plugin gak usah diganti sesuaikan aja dengan yang sekarang
+
+kalau nemu ERROR
+
+* What went wrong:
+Script compilation errors:
+
+  Line 09: import org.gradle.configurationcache.extensions.serviceOf
+                             ^ Unresolved reference: configurationcache
+
+  Line 43:       serviceOf<ModuleRegistry>().getModule("gradle-tooling-api-builders").classpath.asFiles.first()
+                 ^ Unresolved reference: serviceOf
+
+2. In your android/app/build.gradle Add the following lines to the dependencies section:
+* exoplayer pake yang ini aja 
+implementation 'com.google.android.exoplayer:exoplayer-core:2.15.1'
+implementation 'com.google.android.exoplayer:exoplayer-dash:2.15.1'
+implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.1'
+
+kalau ada ERROR
+
+Could not find com.google.android.exoplayer:exoplayer:2.7.1.
