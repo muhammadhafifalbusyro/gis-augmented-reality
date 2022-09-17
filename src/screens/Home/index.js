@@ -24,12 +24,19 @@ const Home = ({navigation, route}) => {
       id: 1,
       latitude: -6.2131976,
       longitude: 106.8664648,
+      name: 'Rumah Hafif',
     },
-    {
-      id: 2,
-      latitude: -6.2130846550645,
-      longitude: 106.86638072133063,
-    },
+    // {
+    //   id: 2,
+    //   latitude: -6.2130846550645,
+    //   longitude: 106.86638072133063,
+    // },
+    // {
+    //   id: 1,
+    //   name: 'Masjid Jami Pisangan Baru',
+    //   latitude: -6.213063323428412,
+    //   longitude: 106.86634585261345,
+    // },
   ]);
   const [time, setTime] = useState(false);
   const [count, setCount] = useState(0.00123);
@@ -140,7 +147,7 @@ const Home = ({navigation, route}) => {
                 onPress: () => {
                   console.log('asd');
                   // setStop(false);
-                  navigation.navigate('DetailAR');
+                  navigation.navigate('DetailAR', {name: listLocation[i].name});
                 },
               },
             ],

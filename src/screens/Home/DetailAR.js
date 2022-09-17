@@ -7,7 +7,7 @@
  */
 
 import React, {useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import {
   ViroARScene,
   ViroText,
@@ -21,11 +21,14 @@ import {
   ViroQuad,
   ViroAnimations,
   ViroBox,
+  ViroImage,
+  V,
 } from '@viro-community/react-viro';
+import {images} from '../../assets';
 
-const HelloWorldSceneAR = () => {
+const HelloWorldSceneAR = props => {
   const [text, setText] = useState('Initializing AR...');
-
+  console.log('props', props.arSceneNavigator.viroAppProps);
   function onInitialized(state, reason) {
     console.log('guncelleme', state, reason);
     // if (state === ViroConstants.TRACKING_NORMAL) {
@@ -43,6 +46,12 @@ const HelloWorldSceneAR = () => {
         z:dari depan ke belakang
         satuannya meter */}
       <ViroText
+        text={props.arSceneNavigator.viroAppProps}
+        scale={[0.5, 0.5, 0.5]}
+        position={[2, 0, -2]}
+        style={styles.helloWorldTextStyle}
+      />
+      <ViroText
         text={'Lantai 1'}
         scale={[0.5, 0.5, 0.5]}
         position={[0, 0, -2]}
@@ -59,17 +68,26 @@ const HelloWorldSceneAR = () => {
         animation={{name: 'rotate', run: true, loop: true}}
         scale={[0.3, 0.3, 0.1]}
       /> */}
+      {/* <ViroImage
+        source={images.logo}
+        scale={[0.5, 0.5, 0.5]}
+        position={[0, 1, -2]}
+        style={{height: 1, width: 1}}
+      /> */}
     </ViroARScene>
   );
 };
 
-export default () => {
+export default ({navigation, route}) => {
+  const [name, setName] = useState(route.params.name);
+  //   alert(name);
   return (
     <ViroARSceneNavigator
       autofocus={true}
       initialScene={{
         scene: HelloWorldSceneAR,
       }}
+      viroAppProps={name}
       style={styles.f1}
     />
   );
